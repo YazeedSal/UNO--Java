@@ -16,7 +16,7 @@ I chose to recreate UNO because it is simple at first, but requires smart use of
 ---
 
 ## 🛠 Technologies
-- Java 17 (or whichever version you use)
+- Java 17
 - Console-based interaction
 
 ---
