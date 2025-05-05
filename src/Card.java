@@ -13,4 +13,5 @@ public class Card{
     public String toString() {
         return this.value +","+this.color;
     }
+    public void applyEffect(GameEngine engine, Player player){}
 }

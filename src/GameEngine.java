@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +7,9 @@ public class GameEngine {
     Deck deck = new Deck();
     Scanner scanner = new Scanner(System.in);
     Card topCard = deck.drawCard();
+    int numberOfPlayers = 2; // to ask the user after this to enter a number
+    int currentTurn =0;
+
 
     GameEngine(){
         startGame();
@@ -37,16 +39,22 @@ public class GameEngine {
 
     }
     public void gameLoop(){
-        int numberOfPlayers = 2; // to ask the user after this to enter a number
-        int k =0;
         while (!players.get(0).hasWon()&&!players.get(1).hasWon()){
-            this.topCard = players.get(k%2).playTurn(topCard,scanner,deck);
-            if (k==1){
-                k =0;
-            }else {
-                k++;
-            }
+            this.topCard = players.get(currentTurn%2).playTurn(topCard,scanner,deck);
+            this.topCard.applyEffect(this,players.get(currentTurn));
+            currentTurn = iterateTurns(currentTurn);
         }
         System.out.println("Congratsssss!!!!");
     }
+    public int iterateTurns(int currentTurn){
+        if (currentTurn == 1) {
+            return 0;
+        }else{
+            return 1;
+        }
+    }
+    public void skipNextPlayer(){
+         currentTurn = iterateTurns(currentTurn);
+    }
+
 }

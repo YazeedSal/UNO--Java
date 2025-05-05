@@ -15,7 +15,10 @@ public class Deck {
         String[] colors = {"Red","Green","Blue","Yellow"};
         for (String color: colors) {
             cards.add(new Card(color, 0));
-            for (int i = 1; i <= 9; i++) {
+            cards.add(new SkipCard(color));
+            cards.add(new SkipCard(color));
+
+            for (int i = 1; i <= 2; i++) { // TODO: return this to 9
                 cards.add(new Card(color, i));
                 cards.add(new Card(color, i));
             }
